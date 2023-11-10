@@ -1,0 +1,167 @@
+{% extends 'main.html' %}
+{% load static %}
+ 
+{% block title %}BI-Tecnología - Category{% endblock title %}
+
+{% block content %}
+<section id="breadcrumb">
+    <div class="max-width-container content-muted">
+        <a href="">Inicio</a>&nbsp;/&nbsp;<span class="content-xlarge">Plotters HP</span>
+    </div>
+</section>
+<section id="category">
+    <div class="max-width-container content">
+        <section id="category-options">
+            <div id="subcategories" class="rounded-box content">
+                <div class="subsection-title">Plotters HP</div>
+                <ul>
+                    <li><a href="#" class="content content-small content-muted">Plotters técnicos</a></li>
+                    <li><a href="#" class="content content-small content-muted">Plotters gráficos</a></li>
+                    <li><a href="#" class="content content-small content-muted">Plotters multifuncionales</a></li>
+                </ul>
+            </div>
+            <div id="filters-container" class="rounded-box content">
+                <div class="subsection-title">Filtros</div>
+                <div class="filter-check">
+                    <p class="content-bold">Filtro check:</p>
+                    <label class="checkbox-container content content-muted" for="check1">
+                        <input type="checkbox" name="check1" id="check1">
+                        Check 1
+                    </label>
+                    <label class="checkbox-container content-muted" for="check2">
+                        <input type="checkbox" name="check2" id="check2" checked>
+                        Check 2
+                    </label>
+                </div>
+                <div class="filter-text">
+                    <p class="content-bold">Precio:</p>
+                    <label class="content content-muted" for="check1">
+                        $
+                        <input type="number" name="menor" id="menor" placeholder="Desde">
+                    </label>
+                    <label class="content content-muted" for="check1">
+                        $
+                        <input type="number" name="mayor" id="mayor" placeholder="Hasta">
+                    </label>
+                </div>
+                <div class="filter-radio">
+                    <p class="content-bold">Filtro radio:</p>
+                    <label class="radio-container content content-muted" for="radio1">
+                        <input type="radio" name="radio" id="radio1">
+                        Radio 1
+                    </label>
+                    <label class="radio-container content content-muted" for="radio2">
+                        <input type="radio" name="radio" id="radio2">
+                        Radio 2
+                    </label>
+                </div>
+                <div class="filter-select">
+                    <p class="content-bold">Filtro select:</p>
+                    <label for="select" class="content content-muted">Ordenar por:
+                        <select name="select" id="select" class="content-small box">
+                            <option value="1">Precio (menor a mayor)</option>
+                            <option value="2">Precio (mayor a menor)</option>
+                        </select>
+                    </label>
+                </div>
+                <button>Filtrar</button>
+            </div>
+        </section>
+        <section id="category-container">
+            <div id="category-header" class="section-header rounded-box content content-small content-muted">
+                <div>
+                    <label for="sort-by">Ordenar por: </label>
+                    <select name="sort-by" id="sort-by" class="content-small">
+                        <option value="1">Precio (menor a mayor)</option>
+                        <option value="2">Precio (mayor a menor)</option>
+                    </select>
+                </div>
+                <div>20 productos</div>
+            </div>
+            <div class="product-container">
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            <div id="category-footer" class="section-footer rounded-box content content-small content-muted">
+                <p class="content content-small content-muted">Mostrando 5 de 20 productos</p>
+                <div class="pagination">
+                    <div class="current-page">1</div>
+                    <div class="page">2</div>
+                    <div class="page">3</div>
+                    <div class="page">4</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+{% endblock content %}

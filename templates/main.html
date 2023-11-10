@@ -1,0 +1,224 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <script src="{% static 'js/sharp.js' %}" defer></script>
+    <title>{% block title%}BI-Tecnología{%endblock title%}</title>
+</head>
+<body>
+    <header>
+        <section id="title-phone" class="header-text separator">
+            <div class="max-width-container">
+                <div>Plotters HP: entrega e instalación sin costo en Monterrey</div>
+                <a href="tel:8114771790"><span class="mdi mdi-phone"></span>(81)1477-1790</a>
+            </div>
+        </section>
+        <section id="logo-search-icons" class="content content-bold separator">
+            <div class="max-width-container">
+                <a href="#"><img class="logo" src="{% static 'images/bit-logo.png' %}" alt="BI-Tecnología"></a>
+                <!--BEGIN HAMBURGUER MENU-->
+                <div id="hamburguer" class="hamburguer">
+                    <span id="hamburguer-icon" class="mdi mdi-menu"></span>
+                    <div id="hamburguer-menu" class="hamburguer-menu">
+                        <ul>
+                            <a href=""><li class="separator">Plotters HP</li></a>
+                            <a href=""><li class="separator">Consumibles</li></a>
+                            <a href=""><li class="separator">Papel</li></a>
+                        </ul>
+                    </div>
+                    <div id="close-hamburguer-menu" class="close-hamburguer-menu">
+                        <span class="mdi mdi-close"></span>
+                    </div>
+                </div>
+                <!--END HAMBURGUER MENU-->
+                <div id="search">
+                    <input type="text" placeholder="Buscar producto...">
+                    <span class="mdi mdi-magnify"></span>
+                </div>
+                <div id="icons">
+                    <a href="#" id="user">
+                        <span class="mdi mdi-account"></span>
+                        <span class="icon-text">Mi cuenta</span>
+                    </a>
+                    <a href="#" id="favorites">
+                        <span class="mdi mdi-heart"></span>
+                        <span class="icon-text">Favoritos</span>
+                    </a>
+                    <a href="#" id="cart">
+                        <span class="mdi mdi-cart"></span>
+                        <span class="icon-text">Carrito</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="menu" class="content separator">
+            <div class="max-width-container">
+                <ul id="nav">
+                    <li id="category-menu" class="nav-item">
+                        <div id="menu-title" class="menu-title">
+                            <span class="mdi mdi-apps"></span>
+                            <span>Categorías</span>
+                            <span class="mdi mdi-chevron-down" id="chevron-down-cat"></span>
+                            <span class="mdi mdi-chevron-up" id="chevron-up-cat"></span>
+                        </div>
+                        <!-- BEGIN CATEGORY DROP DOWN MENU -->
+                        <div id="category-dropdown" class="menu-dropdown">
+                            <ul>
+                                <li><a href="" class="menu-item">Mawa</a></li>
+                                <li class="submenu-container">
+                                    <a href="" class="menu-item menu-parent">
+                                        <span>Plotters HP</span>
+                                        <span class="mdi mdi-chevron-right"></span>
+                                    </a>
+                                    <ul class="menu-child shadow content content-small content-muted">
+                                        <li><a href="">Plotters Técnicos</a></li>
+                                        <li><a href="">Plotters Gráficos</a></li>
+                                        <li><a href="">Plotters Multifuncionales</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="" class="menu-item">Consumibles</a></li>
+                                <li class="submenu-container">
+                                    <a href="" class="menu-item menu-parent">
+                                        <span>Papel</span>
+                                        <span class="mdi mdi-chevron-right"></span>
+                                    </a>
+                                    <ul class="menu-child shadow content content-small content-muted">
+                                        <li><a href="">Papel bond</a></li>
+                                        <li><a href="">Fotográfico</a></li>
+                                        <li><a href="">Canvas</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="" class="menu-item">Otra categoría</a></li>
+                            </ul>
+                        </div>
+                        <!-- END CATEGORY DROP DOWN MENU -->
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Plotters HP</a>
+                        <ul class="menu-subcategory shadow content content-small content-muted">
+                            <li><a href="">Plotters Técnicos</a></li>
+                            <li><a href="">Plotters Gráficos</a></li>
+                            <li><a href="">Plotters Multifuncionales</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">HP Designjet T730</a>
+                        <div class="menu-product shadow content content-small content-muted">
+                            <a href="" class="min-product-card">
+                                <img src="{% static 'images/plotters.jpg' %}" alt="">
+                                <span class="content">HP Designjet T2600</span>
+                                <span class="price">$319,999</span>
+                            </a >
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="#">Guía de selección de plotters</a></li>
+                    <li class="nav-item"><a href="#">Contáctanos</a></li>
+                </ul>
+            </div>
+        </section>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <footer>
+        <section class="footer separator footer-text">
+            <div class="max-width-container">
+                <section id="business-info">
+                    <img class="logo" src="{% static 'images/bit-logo.png' %}" alt="BI-Tecnología">
+                    <div>
+                        <div>Vasconcelos #101 Local 1</div>
+                        <div>Bosques del Valle</div>
+                        <div>San Pedro Garza García, N.L.</div>
+                        <div>C.P. 66250</div>
+                        <div><a href="tel:8114771790"><span class="mdi mdi-phone"></span>tel. (81)1477-1790 y 91</a></div>
+                        <div><a href="#"><span class="mdi mdi-mail"></span>contacto@bi-tecnologia.com</a></div>
+                    </div>
+                </section>
+                <section class="info">
+                    <div class="info-title content-bold content-large" id="info-1">
+                        <span>Información</span>
+                        <span class="mdi mdi-chevron-down" id="chevron-down-1"></span>
+                        <span class="mdi mdi-chevron-up" id="chevron-up-1"></span>
+                    </div>
+                    <div class="info-links" id="info-links-1">
+                        <ul>
+                            <a href="#"><li>Acerca de BI-Tecnología</li></a>
+                            <a href="#"><li>Terminos y condiciones</li></a>
+                            <a href="#"><li>Aviso de privacidad</li></a>
+                            <a href="#"><li>Forma de contacto</li></a>
+                            <a href="#"><li>Pago seguro</li></a>
+                            <a href="#"><li>Constancia de situación fiscal</li></a>
+                            <a href="#"><li>Opinión de cumplimiento</li></a>
+                        </ul>
+                    </div>
+                </section>
+                <section class="info">
+                    <div class="info-title content-large content-bold" id="info-2">
+                        <span>Información</span>
+                        <span class="mdi mdi-chevron-down" id="chevron-down-2"></span>
+                        <span class="mdi mdi-chevron-up" id="chevron-up-2"></span>
+                    </div>
+                    <div class="info-links" id="info-links-2">
+                        <ul>
+                            <a href="#"><li>Acerca de BI-Tecnología</li></a>
+                            <a href="#"><li>Terminos y condiciones</li></a>
+                            <a href="#"><li>Aviso de privacidad</li></a>
+                            <a href="#"><li>Forma de contacto</li></a>
+                            <a href="#"><li>Pago seguro</li></a>
+                            <a href="#"><li>Constancia de situación fiscal</li></a>
+                            <a href="#"><li>Opinión de cumplimiento</li></a>
+                        </ul>
+                    </div>
+                </section>
+                <section class="info">
+                    <div class="info-title content-large content-bold" id="info-3">
+                        <span>Información</span>
+                        <span class="mdi mdi-chevron-down" id="chevron-down-3"></span>
+                        <span class="mdi mdi-chevron-up" id="chevron-up-3"></span>
+                    </div>
+                    <div class="info-links" id="info-links-3">
+                        <ul>
+                            <a href="#"><li>Acerca de BI-Tecnología</li></a>
+                            <a href="#"><li>Terminos y condiciones</li></a>
+                            <a href="#"><li>Aviso de privacidad</li></a>
+                            <a href="#"><li>Forma de contacto</li></a>
+                            <a href="#"><li>Pago seguro</li></a>
+                            <a href="#"><li>Constancia de situación fiscal</li></a>
+                            <a href="#"><li>Opinión de cumplimiento</li></a>
+                        </ul>
+                    </div>
+                </section>
+                <section class="info">
+                    <div class="info-title content-large content-bold" id="info-4">
+                        <span>Información</span>
+                        <span class="mdi mdi-chevron-down" id="chevron-down-4"></span>
+                        <span class="mdi mdi-chevron-up" id="chevron-up-4"></span>
+                    </div>
+                    <div class="info-links" id="info-links-4">
+                        <ul>
+                            <a href="#"><li>Acerca de BI-Tecnología</li></a>
+                            <a href="#"><li>Terminos y condiciones</li></a>
+                            <a href="#"><li>Aviso de privacidad</li></a>
+                            <a href="#"><li>Forma de contacto</li></a>
+                            <a href="#"><li>Pago seguro</li></a>
+                            <a href="#"><li>Constancia de situación fiscal</li></a>
+                            <a href="#"><li>Opinión de cumplimiento</li></a>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </section>
+        <section id="copyright" class="footer-text">
+            <div class="max-width-container">
+                &copy; Todos los derechos reservados, Big Impression Tecnología
+            </div>
+        </section>
+    </footer>
+</body>
+</html>
