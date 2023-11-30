@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-n%e6fe9!h27!m$x_d9%^7mv)2q1h65y446t^jt%+%!%_^ubj^z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -63,6 +63,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'catalog.context_processors.business',
             ],
         },
     },
@@ -76,8 +77,12 @@ WSGI_APPLICATION = 'sharp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sharp',
+        'USER': 'sharp',
+        'PASSWORD': 'M3tr0p0l1s$',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -126,3 +131,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = "/images/"
 MEDIA_ROOT = BASE_DIR / "images"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.hostinger.com'
+EMAIL_USE_TLS = False
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'web@bi-tecnologia.com'
+EMAIL_HOST_PASSWORD = 'D3s1gnj3t$'

@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load filters %}
  
 {% block title %}BI-Tecnología - Inicio{% endblock title %}
 
@@ -7,139 +8,80 @@
 <section class="slider-promo">
     <div class="max-width-container">
         <section class="slider-container">
-            <div class="slide">
-                <img class="slider-img" src="{% static 'images/slider-01.webp' %}" alt="Filled by django">
-                <div class="slide-text">
-                    <div class="slide-title">Plotters para profesionales</div>
-                    <div class="slide-name content heading-large">HP Designjet</div>
-                    <div class="slide-msg content-large">Desde $17,499</div>
-                </div>
-            </div>
-            <div class="slide">
-                <img class="slider-img" src="{% static 'images/slider-02.webp' %}" alt="Slider">
-                <div class="slide-text">
-                    <div class="slide-title">Papeles para Ploter</div>
-                    <div class="slide-name content heading-large">Kronaline</div>
-                    <div class="slide-msg content-large">Gran variedad y disponibilidad</div>
-                </div>
-            </div>
+            {% for slider in sliders %}
+                {% if slider.category %}
+                <a href="{{ slider.category.get_absolute_url }}">
+                {% else %}
+                <a href="{{ slider.product.get_absolute_url }}">
+                {% endif %}
+                    <div class="slide">
+                        <img class="slider-img" src="images/{{ slider.image }}" alt="Filled by django">
+                        <div class="slide-text">
+                            <div class="slide-title">{{ slider.title }}</div>
+                            <div class="slide-name content heading-large">{{ slider.name }}</div>
+                            <div class="slide-msg content-large">{{ slider.message }}</div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+            
             <div class="slider-indicator">
-                <span class="slider-dot mdi mdi-circle" id="dot-1"></span>
-                <span class="slider-dot mdi mdi-circle-outline" id="dot-2"></span>
+                {% for slider in sliders %}
+                    {% if forloop.counter == 1 %}
+                        <span class="slider-dot mdi mdi-circle" id="dot-{{ forloop.counter }}"></span>
+                    {% else %}
+                        <span class="slider-dot mdi mdi-circle-outline" id="dot-{{ forloop.counter }}"></span>
+                    {% endif %}
+                {% endfor %}
             </div>
+            
         </section>
         <section class="promo-container">
-            <div class="promo" id="promo-1">
-                <img class="promo-img" src="{% static 'images/promo-01.webp' %}" alt="Promo 1">
-                <div class="promo-text">
-                    <div class="promo-title">Oferta!</div>
-                    <div class="promo-name">HP Designjet T730</div>
-                    <div class="promo-msg content-large">$69,999</div>
+            {% for promo in promos %}
+                {% if promo.category %}
+                    <a href="{{ promo.category.get_absolute_url }}">
+                {% else %}
+                    <a href="{{ promo.product.get_absolute_url }}">
+                {% endif %}
+                <div class="promo" id="promo-{{ forloop.counter }}">
+                    <img class="promo-img" src="images/{{ promo.image }}" alt="Promo {{ forloop.counter }}">
+                    <div class="promo-text">
+                        <div class="promo-title">{{ promo.title }}</div>
+                        <div class="promo-name">{{ promo.name }}</div>
+                        <div class="promo-msg">{{ promo.message }}</div>
+                    </div>
                 </div>
-            </div>
-            <div class="promo" id="promo-2">
-                <img class="promo-img" src="{% static 'images/promo-02.webp' %}" alt="Promo 2">
-                <div class="promo-text">
-                    <div class="promo-title">Oferta!</div>
-                    <div class="promo-name">HP Designjet T730</div>
-                    <div class="promo-msg content-large">$69,999</div>
-                </div>
-            </div>
-            <div class="promo" id="promo-3">
-                <img class="promo-img" src="{% static 'images/promo-03.webp' %}" alt="Promo 3">
-                <div class="promo-text">
-                    <div class="promo-title">Oferta!</div>
-                    <div class="promo-name">HP Designjet T730</div>
-                    <div class="promo-msg content-large">$69,999</div>
-                </div>
-            </div>
-            <div class="promo" id="promo-4">
-                <img class="promo-img" src="{% static 'images/promo-04.webp' %}" alt="Promo 4">
-                <div class="promo-text">
-                    <div class="promo-title">Oferta!</div>
-                    <div class="promo-name">HP Designjet T730</div>
-                    <div class="promo-msg content-large">$69,999</div>
-                </div>
-            </div>
+            </a>
+            {% endfor %}
         </section>
     </div>
 </section>
 <section id="feautured">
+    
     <div class="max-width-container">
         <div class="section-title">Productos Destacados</div>
         <div class="product-container">
+            {% for product in products %}
             <div class="product-card rounded-box">
                 <div class="mdi mdi-heart-outline"></div>
-                <div class="offer-pill content-small">-8%</div>
-                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
-                <a href="" class="brand content-small">HP</a>
-                <a href="" class="product-name content">HP Designjet T730</a>
+                {% if product.discount %}
+                <div class="offer-pill content-small"> {{ product.discount|floatformat:2 }}%</div>
+                {% endif %}
+                <a href=""><img src="{{ product.image }}" alt=""></a>
+                <a href="" class="brand content-small">{{ product.brand }}</a>
+                <a href="" class="product-name content">{{ product.name }}</a>
                 <div class="card-price">
-                    <span class="not-price">$11,111.11</span>
-                    <span class="price">$11,111.11</span>
+                    {% if product.notPrice %}
+                    <span class="not-price">{{ product.notPrice|format_currency }}</span>
+                    <span class="price">{{ product.price|format_currency }}</span>
+                    {% else %}
+                    <span class="price">{{ product.price|format_currency }}</span>
+                    {% endif %}
+                    
                 </div>
                 <button>Comprar</button>
-            </div>
-            <div class="product-card rounded-box">
-                <div class="mdi mdi-heart-outline"></div>
-                <div class="offer-pill content-small">-8%</div>
-                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
-                <a href="" class="brand content-small">HP</a>
-                <a href="" class="product-name content">HP Designjet T730</a>
-                <div class="card-price">
-                    <span class="not-price">$11,111.11</span>
-                    <span class="price">$11,111.11</span>
-                </div>
-                <button>Comprar</button>
-            </div>
-            <div class="product-card rounded-box">
-                <div class="mdi mdi-heart-outline"></div>
-                <div class="offer-pill content-small">-8%</div>
-                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
-                <a href="" class="brand content-small">HP</a>
-                <a href="" class="product-name content">HP Designjet T730</a>
-                <div class="card-price">
-                    <span class="not-price">$11,111.11</span>
-                    <span class="price">$11,111.11</span>
-                </div>
-                <button>Comprar</button>
-            </div>
-            <div class="product-card rounded-box">
-                <div class="mdi mdi-heart-outline"></div>
-                <div class="offer-pill content-small">-8%</div>
-                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
-                <a href="" class="brand content-small">HP</a>
-                <a href="" class="product-name content">HP Designjet T730</a>
-                <div class="card-price">
-                    <span class="not-price">$11,111.11</span>
-                    <span class="price">$11,111.11</span>
-                </div>
-                <button>Comprar</button>
-            </div>
-            <div class="product-card rounded-box">
-                <div class="mdi mdi-heart-outline"></div>
-                <div class="offer-pill content-small">-8%</div>
-                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
-                <a href="" class="brand content-small">HP</a>
-                <a href="" class="product-name content">HP Designjet T730</a>
-                <div class="card-price">
-                    <span class="not-price">$11,111.11</span>
-                    <span class="price">$11,111.11</span>
-                </div>
-                <button>Comprar</button>
-            </div>
-            <div class="product-card rounded-box">
-                <div class="mdi mdi-heart-outline"></div>
-                <div class="offer-pill content-small">-8%</div>
-                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
-                <a href="" class="brand content-small">HP</a>
-                <a href="" class="product-name content">HP Designjet T730</a>
-                <div class="card-price">
-                    <span class="not-price">$11,111.11</span>
-                    <span class="price">$11,111.11</span>
-                </div>
-                <button>Comprar</button>
-            </div>
+            </div>   
+            {% endfor %}
         </div>
     </div>
 </section>

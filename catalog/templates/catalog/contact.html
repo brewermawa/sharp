@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+{% load static %}
+ 
+{% block title %}BI-Tecnología - Product{% endblock title %}
+
+{% block content %}
+<section id="breadcrumb">
+    <div class="max-width-container content-muted">
+        <a href="">Inicio</a>
+        &nbsp;/&nbsp;
+        <span class="content-xlarge">Contáctanos</span>
+    </div>
+</section>
+<section id="contact">  
+    <div class="max-width-container">
+        <div id="contact-map" class="section-header rounded-box content">
+            {% if confirm %}
+                <div class="section-title">Comentario enviado</div>
+                <div>
+                    <div>En breve nos pondremos en contacto contigo</div>
+                    <br>
+                    <br>
+                    <a href="{% url 'catalog:home' %}"><button>Página principal</button></a>    
+                </div>
+            {% else %}
+                <div class="section-title">Contáctanos</div>
+                <form class="contact-form" action="" method="post">
+                    {% csrf_token %}
+                    <div class="field">
+                        {{ contact_form.name.errors }}
+                        {{ contact_form.name.label_tag }}
+                        {{ contact_form.name }}    
+                    </div>
+                    <div class="field">
+                        {{ contact_form.email.errors }}
+                        {{ contact_form.email.label_tag }}
+                        {{ contact_form.email }}    
+                    </div>
+                    <div class="field">
+                        {{ contact_form.phone.errors }}
+                        {{ contact_form.phone.label_tag }}
+                        {{ contact_form.phone }}    
+                    </div>
+                    <div class="field">
+                        {{ contact_form.message.errors }}
+                        {{ contact_form.message.label_tag }}
+                        {{ contact_form.message }}    
+                    </div>
+                    <button type="submit">Enviar comentario</button>
+                </form>
+            {% endif %}
+                <div id="map">
+                    <div id="display-google-map" style="height:100%; width:100%;max-width:100%;">
+                        <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Big+Impression+Tecnología,+S.A.+de+C.V.,+Avenida+José+Vasconcelos,+Bosques+del+Valle+1er+Sector,+San+Pedro+Garza+García,+Nuevo+Leon,+Mexico&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+                    </div>
+                    <a class="googlemaps-made" href="https://www.bootstrapskins.com/themes" id="enable-maps-data">premium bootstrap themes</a><style>#display-google-map img{max-height:none;max-width:none!important;background:none!important;}</style>
+                </div>
+            
+        </div>
+    </div>
+</section>
+{% endblock content %}
