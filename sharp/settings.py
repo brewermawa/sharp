@@ -137,5 +137,3 @@ EMAIL_HOST = 'smtp.hostinger.com'
 EMAIL_USE_TLS = False
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
-EMAIL_HOST_USER = 'web@bi-tecnologia.com'
-EMAIL_HOST_PASSWORD = 'D3s1gnj3t$'
