@@ -57,7 +57,7 @@ class Category(models.Model):
         return self.name
     
     def get_absolute_url(self):
-        return reverse("catalog:category", kwargs={'slug': self.slug})
+        return reverse("catalog:category", kwargs={'category_slug': self.slug})
     
     def image_preview(self):
         return mark_safe(f"<img src='{self.image.url}' width='200' />")

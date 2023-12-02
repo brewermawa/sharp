@@ -5,14 +5,14 @@ from . import views
 app_name = "catalog"
 
 urlpatterns = [
-    path("", views.home, name="home"),
-    path("<slug:slug>", views.category, name="category"),
-    path("<slug:category_slug>/<slug:product_slug>/", views.product, name="product"),
-    path("category/", views.category, name="category"),
-    path("product/", views.product, name="product"),
-    path("promotions/", views.promotions, name="promotions"),
-    path("compare/", views.compare, name="compare"),
-    path("wishlist/", views.wishlist, name="wishlist"),
-    path("guide/", views.guide, name="guide"),
-    path("contacto/", views.contact, name="contacto"),
+    path("", views.home_view, name="home"),
+    path("<slug:category_slug>", views.category_view, name="category"),
+    path("<slug:category_slug>/<slug:product_slug>/", views.product_view, name="product"),
+    path("category/", views.category_view, name="category"),
+    path("product/", views.product_view, name="product"),
+    path("promotions/", views.promotions_view, name="promotions"),
+    path("compare/", views.compare_view, name="compare"),
+    path("wishlist/", views.wishlist_view, name="wishlist"),
+    path("guide/", views.guide_view, name="guide"),
+    path("contacto/", views.contact_view, name="contacto"),
 ]

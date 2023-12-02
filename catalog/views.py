@@ -3,65 +3,53 @@ from django.core.mail import EmailMessage, get_connection
 from django.conf import settings    
 
 from .forms import ContactForm
-from .models import Slider, Promo, Product, ProductImages, ProductPrice
+from .models import Slider, Promo, Product, ProductImages, ProductPrice, Category
+from .utils import getBreadCrumbs, getProducts
 
 
-def home(request):
+def home_view(request):
     sliders = Slider.objects.filter(active=True)
     promos = Promo.objects.filter(active=True)
-    products = Product.objects.filter(categories__name="home")
-    productList = []
-
-    for product in products:
-        try:
-            productImage = f"images/{ProductImages.objects.get(product=product, main=True).image}"
-        except:
-            productImage = ""
-
-        try:
-            price = ProductPrice.objects.get(product=product, active=True).final_price
-            notPrice = product.price
-            discount = ((notPrice - price) / notPrice)*100
-        except:
-            price = product.price
-            notPrice = False
-            discount = False
-
-        product = {
-            "name": product.name,
-            "brand": product.brand,
-            "image": productImage,
-            "price": price,
-            "notPrice": notPrice,
-            "discount": discount
-        }
-        productList.append(product)
+    products = getProducts(Product.objects.filter(categories__pk=1))
 
     return render(request, "catalog/home.html", {
         "sliders": sliders,
         "promos": promos,
-        "products": productList,
+        "products": products,
     })
 
-def category(request):
-    return render(request, "catalog/category.html")
+def category_view(request, category_slug):
+    category = Category.objects.get(slug=category_slug)
+    products = getProducts(Product.objects.filter(categories__pk=category.pk))
 
-def product(request):
+    breadCrumbs = getBreadCrumbs(category.pk, [])
+    breadCrumbs.reverse()
+
+    childCategories = Category.objects.filter(parent_category=category.id)
+
+    return render(request, "catalog/category.html", {
+        "breadCrumbs": breadCrumbs,
+        "category": category,
+        "childCategories": childCategories,
+        "products": products,
+    })
+
+def product_view(request, category, product):
     return render(request, "catalog/product.html")
 
-def promotions(request):
+def promotions_view(request):
     return render(request, "catalog/promotions.html")
 
-def compare(request):
+def compare_view(request):
     return render(request, "catalog/compare.html")
 
-def wishlist(request):
+def wishlist_view(request):
     return render(request, "catalog/wishlist.html")
 
-def guide(request):
+def guide_view(request):
     return render(request, "catalog/selection_guide.html")
 
-def contact(request):
+def contact_view(request):
     confirm = False
     if request.method == "POST":
         form = ContactForm(request.POST)
