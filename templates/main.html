@@ -1,5 +1,5 @@
 {% load static %}
-{% load filters %}
+    {% load filters %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -139,7 +139,32 @@
                         <div><a href="#"><span class="mdi mdi-mail"></span>{{ info.email }}</a></div>
                     </div>
                 </section>
+                {% for section in footerSections %}
                 <section class="info">
+                    <div class="info-title content-bold content-large" id="info-{{ forloop.counter }}">
+                        <span>{{ section }}</span>
+                        <span class="mdi mdi-chevron-down" id="chevron-down-{{ forloop.counter }}"></span>
+                        <span class="mdi mdi-chevron-up" id="chevron-up-{{ forloop.counter }}"></span>
+                    </div>
+                    <div class="info-links" id="info-links-{{ forloop.counter }}">
+                        <ul>
+                            {% for link in footerLinks %}
+                                {% if link.footerSection == section %}
+                                    <a href="{{ link.url }}"><li>{{ link.name }}</li></a>
+                                {% endif %}
+                            {% endfor %}
+                            <!--<a href="#"><li>Acerca de BI-Tecnología</li></a>
+                            <a href="#"><li>Terminos y condiciones</li></a>
+                            <a href="#"><li>Aviso de privacidad</li></a>
+                            <a href="#"><li>Forma de contacto</li></a>
+                            <a href="#"><li>Pago seguro</li></a>
+                            <a href="#"><li>Constancia de situación fiscal</li></a>
+                            <a href="#"><li>Opinión de cumplimiento</li></a>-->
+                        </ul>
+                    </div>
+                </section>
+                {% endfor %}
+                <!--<section class="info">
                     <div class="info-title content-bold content-large" id="info-1">
                         <span>Información</span>
                         <span class="mdi mdi-chevron-down" id="chevron-down-1"></span>
@@ -210,7 +235,7 @@
                             <a href="#"><li>Opinión de cumplimiento</li></a>
                         </ul>
                     </div>
-                </section>
+                </section>-->
             </div>
         </section>
         <section id="copyright" class="footer-text">

@@ -30,6 +30,9 @@ class BusinessInfo(models.Model):
     )
     email = models.EmailField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = "Business Info"
         verbose_name_plural = "Business Info"
@@ -86,7 +89,7 @@ class Product(models.Model):
     name = models.CharField(max_length=60, unique=True, help_text="Product name", verbose_name="name")
     slug = models.SlugField(max_length=60, unique=True, help_text="Friendly URL slug")
     sku = models.CharField(max_length=15, unique=True, help_text="Stock keeping unit", verbose_name="SKU")
-    upc = models.CharField(max_length=12, unique=True, help_text="Universal product code", verbose_name="UPC")
+    upc = models.CharField(max_length=12, blank=True, help_text="Universal product code", verbose_name="UPC")
     short_description = models.TextField(verbose_name="Short description")
     large_Description = models.TextField(verbose_name="Large description")
     thumbnail = models.ImageField(upload_to="product/thumbnail", help_text="Product thumbnail", verbose_name="Thumbnail image file", null=True, blank=True)
@@ -97,19 +100,23 @@ class Product(models.Model):
     active = models.BooleanField(default=True)
     main_category = models.ForeignKey(Category, on_delete=models.PROTECT, null=False, blank=False, related_name="products", help_text="The parent category of the product", verbose_name="Parent category")
     categories = models.ManyToManyField(Category, help_text="Other categories where the product should be shown")
-    price = models.DecimalField(max_digits=7, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     brand = models.ForeignKey(Brand, on_delete=models.PROTECT, related_name="products", null=False, blank=False, help_text="The brand or manufacturer of the product")
     related_product = models.ManyToManyField("self", symmetrical=False, blank=True, related_name="related", help_text="Related products", verbose_name="Related products")
 
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
+        
 
     def __str__(self):
         return self.name
     
     def get_absolute_url(self):
         return reverse("catalog:product", kwargs={'category_slug': self.main_category.slug, 'product_slug': self.slug})
+    
+    def thumbnail_preview(self):
+        return mark_safe(f"<img src='{self.thumbnail.url}' width='100' />")
     
 
 class Menu(models.Model):
@@ -211,6 +218,7 @@ class ProductImages(models.Model):
 class ProductPrice(models.Model):
     PERCENTAGE = "p"
     DIRECT = "d"
+
     PRICING_TYPE_CHOICES = [
         (PERCENTAGE, "Percentage"),
         (DIRECT, "Direct"),
@@ -222,12 +230,77 @@ class ProductPrice(models.Model):
     active = models.BooleanField(default=False)
     start_date = models.DateField(blank=True, null=True)
     end_date = models.DateField(blank=True, null=True)
-    final_price = models.DecimalField(max_digits=7, decimal_places=2)
+    final_price = models.DecimalField(max_digits=10, decimal_places=2)
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="pricing", null=True, blank=True)
 
     def __str__(self):
         return self.name
-
     
 
+class Feauture(models.Model):
+    name = models.CharField(max_length=60, unique=True, help_text="Feauture name", verbose_name="Feauture name")
+
+    def __str__(self):
+        return self.name
     
+
+class FeautureValue(models.Model):
+    value = models.CharField(max_length=25, help_text="Feauture value", verbose_name="Feauture value")
+    feauture = models.ForeignKey(Feauture, on_delete=models.CASCADE, related_name="values")
+
+    def __str__(self):
+        return f"{self.feauture}: {self.value}"
+
+
+class ProductFeautureValue(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="feautures")
+    feauture = models.ForeignKey(Feauture, on_delete=models.CASCADE)
+    value = models.ForeignKey(FeautureValue, on_delete=models.CASCADE)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["product", "feauture"], name="unique_product_feauture")
+        ]
+
+    def __str__(self):
+        return f"{self.product} - {self.feauture}: {self.value}"
+    
+
+class CategoryFilter(models.Model):
+    SELECT = "sel" 
+    RADIO = "rad"
+    CHECK = "chk"
+    RANGE = "rng"
+    TEXT = "txt"
+
+    FILTER_TYPE_CHOICES = [
+        (SELECT, "Dropdown"),
+        (RADIO, "Radio button"),
+        (CHECK, "Checkboxes"),
+        (RANGE, "Range"),
+        (TEXT, "Text")
+    ]
+
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="filters")
+    filter = models.ForeignKey(Feauture, on_delete=models.CASCADE)
+    filterType = models.CharField(max_length=3, choices=FILTER_TYPE_CHOICES, default=SELECT)
+    
+    def __str__(self):
+        return f"{self.category} - {self.filter}"
+    
+
+
+class FooterSection(models.Model):
+    name = models.CharField(max_length=25, help_text="Footer section name", verbose_name="Footer Section")
+
+    def __str__(self):
+        return self.name
+    
+
+class FooterLink(models.Model):
+    name = models.CharField(max_length=25, help_text="Footer link name", verbose_name="Footer link")
+    url = models.CharField(max_length=30, null=False, blank=False)
+    footerSection = models.ForeignKey(FooterSection, on_delete=models.CASCADE, null=False, blank=False)
+
+    def __str__(self):
+        return f"{self.footerSection} - {self.name}"

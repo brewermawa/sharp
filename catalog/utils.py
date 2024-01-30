@@ -1,4 +1,4 @@
-from .models import Category, ProductImages, ProductPrice
+from .models import Category, ProductImages, ProductPrice, CategoryFilter, ProductFeautureValue
 
 
 def getBreadCrumbs(category_id, breadCrumbs=[]):
@@ -31,6 +31,7 @@ def getProducts(products):
             discount = False
 
         product = {
+            "id": product.id,
             "name": product.name,
             "brand": product.brand,
             "image": productImage,
@@ -41,3 +42,39 @@ def getProducts(products):
         productList.append(product)
 
     return productList
+
+
+def getCategoryFilters(category, products):
+    filters = CategoryFilter.objects.filter(category=category)
+    filterList = []
+
+    productIds = []
+    for product in products:
+        productIds.append(product["id"])
+
+    for filter in filters:
+        values = []
+        for product in products:
+            try:
+                filterValue = ProductFeautureValue.objects.get(product=product["id"], feauture=filter.filter)
+                if filterValue.value.value not in values:
+                    values.append(filterValue.value.value)
+            except:
+                pass
+
+        print(f"{filterValue.feauture} - {values}")
+        pass
+
+        f = {
+            "name": filter.filter.name,
+            "type": filter.filterType,
+            "values": values,
+        }
+
+        if len(f["values"]) > 1:
+            filterList.append(f)
+
+    for x in filterList:
+        print(x)
+
+    return filterList

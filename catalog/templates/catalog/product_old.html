@@ -1,0 +1,233 @@
+{% extends 'main.html' %}
+{% load static %}
+ 
+{% block title %}BI-Tecnología - Product{% endblock title %}
+
+{% block content %}
+<section id="breadcrumb">
+    <div class="max-width-container content-muted">
+        <a href="">Inicio</a>
+        &nbsp;/&nbsp;
+        <a href="">Plotters HP</a>
+        &nbsp;/&nbsp;
+        <a href="">Plotters Técnicos</a>
+        &nbsp;/&nbsp;
+        <span class="content-xlarge">HP Designjet T850 MFP</span>
+    </div>
+</section>
+<section id="product">
+    <div class="max-width-container content">
+        <section id="main-product-info" class="rounded-box">
+            <section id="product-images">
+                <img src="{% static 'images/plotters.jpg' %}" alt="">
+                <div id="small-product-images">
+                    <img src="{% static 'images/plotters.jpg' %}" alt="">
+                    <img src="{% static 'images/plotters.jpg' %}" alt="">
+                    <img src="{% static 'images/plotters.jpg' %}" alt="">
+                    <img src="{% static 'images/plotters.jpg' %}" alt="">
+                </div>
+            </section>
+            <section id="product-info">
+                <div id="product-name-favorite" class="content content-large separator-muted">
+                   <div>Product Name</div>
+                   <div class="mdi mdi-heart-outline"></div>
+                </div>
+                <div id="short-description-price" class="separator-muted">
+                    <div id="short-description" class="content content-small content-muted">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo illum vel quia quas, incidunt ipsam maiores accusantium facere rerum recusandae reiciendis atque quaerat cupiditate tempora, adipisci aliquam mollitia, delectus officia!
+                    </div>
+                    <div id="product-price">
+                        <span id="real-price" class="price">$95</span> 
+                        <span id="not-price" class="not-price">$119</span>
+                        <span class="offer-pill content-small">-8%</span>
+                        <div class="content content-small content-muted">IVA incluido</div>
+                    </div>
+                    <div class="rating">
+                        <span class="mdi mdi-star"></span>
+                        <span class="mdi mdi-star"></span>
+                        <span class="mdi mdi-star"></span>
+                        <span class="mdi mdi-star"></span>
+                        <span class="mdi mdi-star-outline"></span>
+                    </div>
+                </div>
+                <div id="add-to-cart" class="separator-muted">
+                    <label for="quantity">
+                        Quantity:
+                        <input type="number" name="quantity" id="quantity">
+                    </label>
+                    <button>Add to Cart</button>
+                </div>
+                <div id="product-chars">
+                    <div id="chars-title" class="content content-bold subsection-title">Características de producto</div>
+                    <span class="content content-bold">Ancho máximo:</span><span class="content">36" (90 cm)</span>
+                    <span class="content content-bold">Memoria:</span><span class="content">1 GB</span>
+                    <span class="content content-bold">Disco duro:</span><span class="content">N/A</span>
+                    <span class="content content-bold">Tipo impresión:</span><span class="content">Híbrida</span>
+                    <span class="content content-bold">Multifuncional:</span><span class="content">No</span>
+                    <span class="content content-bold">Planos mensuales:</span><span class="content">300 recomendados</span>
+                    <span class="content content-bold">Tiempo de entrega:</span><span class="content">Inmediato</span>
+                    <span class="content content-bold">Garantía:</span><span class="content">12 meses</span>
+                </div>
+            </section>
+        </section>
+        <section class="rounded-box content">
+            <ul class="product-tabs">
+                <li id="tab-1" class="tab tab-selected">Descripción</li>
+                <li id="tab-2" class="tab">Consumibles</li>
+                <li id="tab-3" class="tab">Ficha técnica</li>
+                <li id="tab-4" class="tab">Drivers</li>
+            </ul>
+            <div id="tab-content-1" class="tab-content content-small show">
+                <p>111111111111111111111 111111111111111111111111</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempora expedita enim provident quod, reiciendis dolor odio illo ipsam quisquam tenetur consectetur ullam officiis blanditiis fugiat animi perferendis. Molestiae, explicabo?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+            </div>
+            <div id="tab-content-2" class="tab-content content-small">
+                <p>22222222222222222222222 22222222222222222222222222</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempora expedita enim provident quod, reiciendis dolor odio illo ipsam quisquam tenetur consectetur ullam officiis blanditiis fugiat animi perferendis. Molestiae, explicabo?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+            </div>
+            <div id="tab-content-3" class="tab-content content-small">
+                <p>33333333333333333333333 3333333333333333333333333333</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempora expedita enim provident quod, reiciendis dolor odio illo ipsam quisquam tenetur consectetur ullam officiis blanditiis fugiat animi perferendis. Molestiae, explicabo?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+            </div>
+            <div id="tab-content-4" class="tab-content content-small">
+                <p>4444444444444444444444444    44444444444444444444444444</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempora expedita enim provident quod, reiciendis dolor odio illo ipsam quisquam tenetur consectetur ullam officiis blanditiis fugiat animi perferendis. Molestiae, explicabo?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta nulla saepe temporibus blanditiis sint quo, error doloremque illo accusantium ut, necessitatibus aut earum in hic minima dolore quam tempora sequi?</p>
+            </div>
+        </section>
+        <section id="related-products" class="rounded-box content">
+            <div class="section-title">Productos Relacionados</div>
+            <div class="product-container">
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+                <div class="product-card rounded-box">
+                    <div class="mdi mdi-heart-outline"></div>
+                    <div class="offer-pill content-small">-8%</div>
+                    <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                    <a href="" class="brand content-small">HP</a>
+                    <a href="" class="product-name content">HP Designjet T730</a>
+                    <div class="card-price">
+                        <span class="not-price">$11,111.11</span>
+                        <span class="price">$11,111.11</span>
+                    </div>
+                    <button>Comprar</button>
+                </div>
+            </div>
+        </section>
+        <section id="reviews" class="rounded-box content">
+            <div class="section-title">Reseñas de clientes</div>
+            <div class="review separator">
+                <div class="subsection-title">Mawa Guerra (23 Octubre 2023)</div>
+                <div id="rating">
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star-outline"></span>
+                </div>
+                <div class="content-small">Lorem ipsum dolor sit amet consectetur adipisicing elit. At atque vero dolorem tenetur eligendi aut accusamus a ea praesentium, obcaecati quia ipsum recusandae blanditiis vel eveniet iure eius, laboriosam architecto!
+                    Tenetur culpa nesciunt exercitationem esse nihil voluptate consequuntur? Libero distinctio quisquam magnam facilis, excepturi omnis illum in officia unde, eaque aperiam nostrum nihil maxime sequi id. Quae reiciendis numquam saepe!
+                    Amet dolorum hic eveniet mollitia similique ipsa a asperiores at. Tempore id deserunt dolorum totam culpa ratione, fugiat ex similique, ad ab eligendi sunt natus doloribus facilis eum, sed dolorem!
+                    Ducimus rerum sit, error labore facere dolor iusto sint quam nobis reiciendis perferendis aspernatur sequi minus fugit. Asperiores omnis nesciunt minus eius culpa voluptas fuga laborum ea eos saepe! Dolorum?
+                    Quo accusantium ullam sapiente corrupti quis doloribus officia expedita magnam odio quia. Natus, repudiandae. Illum, dolores atque minima veritatis officiis, non animi vero sequi doloremque repellat delectus aperiam voluptas aliquam.
+                    Cumque, sed necessitatibus. Optio necessitatibus vel nemo sint consectetur quibusdam non consequatur inventore? Consequuntur consectetur vel harum ratione. Dolorem sit nobis maxime delectus quos vero dolorum soluta eveniet distinctio aliquam!
+                    Doloremque asperiores praesentium accusamus est dolore nam deserunt, quo earum ullam quasi consequatur ut architecto! Saepe nobis unde cupiditate perspiciatis minus, ad magnam, possimus qui optio incidunt quos vel? Veniam!
+                    Iure optio hic dolor doloremque voluptatum consectetur ratione sunt accusamus officia labore deleniti voluptates quibusdam tempora nostrum repudiandae et voluptas fuga, pariatur quis. Dolor similique error est praesentium illum voluptate.
+                    Eos, fuga dicta at ea laborum voluptatibus, possimus hic quae temporibus eius debitis! Nam sed voluptates vero assumenda quam quaerat. Ullam accusamus tempore provident minima fuga aspernatur sequi fugiat molestias?
+                    Corrupti beatae necessitatibus ipsa nulla veritatis amet optio inventore. Dolore, nisi fugiat? Non ex laborum quis velit atque odit vitae accusantium esse repellendus commodi tempora eius architecto, sequi alias totam.
+                </div>
+            </div>
+            <div class="review separator">
+                <div class="subsection-title">Mawa Guerra (23 Octubre 2023)</div>
+                <div id="rating">
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star"></span>
+                    <span class="mdi mdi-star-outline"></span>
+                </div>
+                <div class="content-small">Lorem ipsum dolor sit amet consectetur adipisicing elit. At atque vero dolorem tenetur eligendi aut accusamus a ea praesentium, obcaecati quia ipsum recusandae blanditiis vel eveniet iure eius, laboriosam architecto!
+                    Tenetur culpa nesciunt exercitationem esse nihil voluptate consequuntur? Libero distinctio quisquam magnam facilis, excepturi omnis illum in officia unde, eaque aperiam nostrum nihil maxime sequi id. Quae reiciendis numquam saepe!
+                    Amet dolorum hic eveniet mollitia similique ipsa a asperiores at. Tempore id deserunt dolorum totam culpa ratione, fugiat ex similique, ad ab eligendi sunt natus doloribus facilis eum, sed dolorem!
+                    Ducimus rerum sit, error labore facere dolor iusto sint quam nobis reiciendis perferendis aspernatur sequi minus fugit. Asperiores omnis nesciunt minus eius culpa voluptas fuga laborum ea eos saepe! Dolorum?
+                    Quo accusantium ullam sapiente corrupti quis doloribus officia expedita magnam odio quia. Natus, repudiandae. Illum, dolores atque minima veritatis officiis, non animi vero sequi doloremque repellat delectus aperiam voluptas aliquam.
+                    Cumque, sed necessitatibus. Optio necessitatibus vel nemo sint consectetur quibusdam non consequatur inventore? Consequuntur consectetur vel harum ratione. Dolorem sit nobis maxime delectus quos vero dolorum soluta eveniet distinctio aliquam!
+                    Doloremque asperiores praesentium accusamus est dolore nam deserunt, quo earum ullam quasi consequatur ut architecto! Saepe nobis unde cupiditate perspiciatis minus, ad magnam, possimus qui optio incidunt quos vel? Veniam!
+                    Iure optio hic dolor doloremque voluptatum consectetur ratione sunt accusamus officia labore deleniti voluptates quibusdam tempora nostrum repudiandae et voluptas fuga, pariatur quis. Dolor similique error est praesentium illum voluptate.
+                    Eos, fuga dicta at ea laborum voluptatibus, possimus hic quae temporibus eius debitis! Nam sed voluptates vero assumenda quam quaerat. Ullam accusamus tempore provident minima fuga aspernatur sequi fugiat molestias?
+                    Corrupti beatae necessitatibus ipsa nulla veritatis amet optio inventore. Dolore, nisi fugiat? Non ex laborum quis velit atque odit vitae accusantium esse repellendus commodi tempora eius architecto, sequi alias totam.
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+{% endblock content %}

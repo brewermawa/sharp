@@ -1,0 +1,217 @@
+{% load static %}
+{% load filters %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css">
+    <script src="{% static 'js/sharp.js' %}" defer></script>
+    <title>{% block title%}BI-Tecnología{%endblock title%}</title>
+</head>
+<body>
+    <header>
+        <section id="logo-search-icons" class="content content-bold separator">
+            <div class="max-width-container">
+                <a href="{% url 'catalog:home' %}"><img class="logo" src="{% static 'images/bit-logo.png' %}" alt="BI-Tecnología"></a>
+                <!--BEGIN HAMBURGUER MENU-->
+                <div id="hamburguer" class="hamburguer">
+                    <span id="hamburguer-icon" class="mdi mdi-menu"></span>
+                    <div id="hamburguer-menu" class="hamburguer-menu">
+                        <ul>
+                            {% for category in categories %}
+                                <a href="{{ category.get_absolute_url }}"><li class="separator">{{ category.name }}</li></a>
+                            {% endfor %}
+                            <a href="{% url 'catalog:contacto' %}"><li class="separator">Contáctanos</li></a>
+                        </ul>
+                    </div>
+                    <div id="close-hamburguer-menu" class="close-hamburguer-menu">
+                        <span class="mdi mdi-close"></span>
+                    </div>
+                </div>
+                <!--END HAMBURGUER MENU-->
+                <div id="search">
+                    <input type="text" placeholder="Buscar producto...">
+                    <span class="mdi mdi-magnify"></span>
+                </div>
+                <div id="icons">
+                    <a href="#" id="user">
+                        <span class="mdi mdi-account"></span>
+                        <span class="icon-text">Mi cuenta</span>
+                    </a>
+                    <a href="#" id="favorites">
+                        <span class="mdi mdi-heart"></span>
+                        <span class="icon-text">Favoritos</span>
+                    </a>
+                    <a href="#" id="cart">
+                        <span class="mdi mdi-cart"></span>
+                        <span class="icon-text">Carrito</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="menu" class="content separator">
+            <div class="max-width-container">
+                <ul id="nav">
+                    <li id="category-menu" class="nav-item">
+                        <div id="menu-title" class="menu-title">
+                            <span class="mdi mdi-apps"></span>
+                            <span>Categorías</span>
+                            <span class="mdi mdi-chevron-down" id="chevron-down-cat"></span>
+                            <span class="mdi mdi-chevron-up" id="chevron-up-cat"></span>
+                        </div>
+                        <!-- BEGIN CATEGORY DROP DOWN MENU -->
+                        <div id="category-dropdown" class="menu-dropdown">
+                            <ul>                                
+                                {% for category in categories %}
+                                    {% if category.child_categories.all %}
+                                        <li class="submenu-container">
+                                            <a href="{{ category.get_absolute_url }}" class="menu-item menu-parent">
+                                                <span>{{ category.name }}</span>
+                                                <span class="mdi mdi-chevron-right"></span>
+                                            </a>
+                                            <ul class="menu-child shadow content content-small content-muted">
+                                                {% for child in category.child_categories.all %}
+                                                    <li><a href="{{ child.get_absolute_url }}">{{ child.name }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                    {% else %}
+                                        <li><a href="{{ category.get_absolute_url }}" class="menu-item">{{ category.name }}</a></li>
+                                    {% endif %}
+                                {% endfor %}    
+                            </ul>
+                        </div>
+                        <!-- END CATEGORY DROP DOWN MENU -->
+                    </li>
+                    {% for menu_item in menu %}
+                    <li class="nav-item">
+                        {% if menu_item.category %}
+                            <a href="{{ menu_item.category.get_absolute_url }}">{{ menu_item.category }}</a>
+                            {% if menu_item.category.child_categories.all %}
+                                <ul class="menu-subcategory shadow content content-small content-muted">
+                                    {% for child in menu_item.category.child_categories.all %}
+                                    <li><a href="{{ child.get_absolute_url }}">{{ child.name }}</a></li>    
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% elif menu_item.product %}
+                            <a href="{{ menu_item.product.get_absolute_url }}">{{ menu_item.product }}</a>
+                            <div class="menu-product shadow content content-small content-muted">
+                                <a href="{{ menu_item.product.get_absolute_url }}" class="min-product-card">
+                                    <img src="/images/{{ menu_item.product.thumbnail }}" alt="">
+                                    <span class="content">{{ menu_item.product }}</span>
+                                    <span class="price">{{ menu_item.product.price|format_currency }}</span>
+                                </a >
+                            </div>
+                        {% else %}
+                            <a href="{{ menu_item.get_absolute_url }}">{{ menu_item }}</a>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </section>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+    <footer>
+        <section class="footer separator footer-text">
+            <div class="max-width-container">
+                <section id="business-info">
+                    <img class="logo" src="{% static 'images/bit-logo.png' %}" alt="BI-Tecnología">
+                    <div>
+                        <div>{{ info.street }} #{{ info.ext_number }} {{ info.int_number }}</div>
+                        <div>{{ info.neighbourhood }}</div>
+                        <div>{{ info.city }}, {{ info.state }}</div>
+                        <div>C.P. {{ info.zip_code }}</div>
+                        <div><a href="tel:8114771790"><span class="mdi mdi-phone"></span>tel. {{ phone }}</a></div>
+                        <div><a href="#"><span class="mdi mdi-mail"></span>{{ info.email }}</a></div>
+                    </div>
+                </section>
+                <section class="info">
+                    <div class="info-title content-bold content-large" id="info-1">
+                        <span>Información</span>
+                        <span class="mdi mdi-chevron-down" id="chevron-down-1"></span>
+                        <span class="mdi mdi-chevron-up" id="chevron-up-1"></span>
+                    </div>
+                    <div class="info-links" id="info-links-1">
+                        <ul>
+                            <a href="#"><li>Acerca de BI-Tecnología</li></a>
+                            <a href="#"><li>Terminos y condiciones</li></a>
+                            <a href="#"><li>Aviso de privacidad</li></a>
+                            <a href="#"><li>Forma de contacto</li></a>
+                            <a href="#"><li>Pago seguro</li></a>
+                            <a href="#"><li>Constancia de situación fiscal</li></a>
+                            <a href="#"><li>Opinión de cumplimiento</li></a>
+                        </ul>
+                    </div>
+                </section>
+                <section class="info">
+                    <div class="info-title content-large content-bold" id="info-2">
+                        <span>Información</span>
+                        <span class="mdi mdi-chevron-down" id="chevron-down-2"></span>
+                        <span class="mdi mdi-chevron-up" id="chevron-up-2"></span>
+                    </div>
+                    <div class="info-links" id="info-links-2">
+                        <ul>
+                            <a href="#"><li>Acerca de BI-Tecnología</li></a>
+                            <a href="#"><li>Terminos y condiciones</li></a>
+                            <a href="#"><li>Aviso de privacidad</li></a>
+                            <a href="#"><li>Forma de contacto</li></a>
+                            <a href="#"><li>Pago seguro</li></a>
+                            <a href="#"><li>Constancia de situación fiscal</li></a>
+                            <a href="#"><li>Opinión de cumplimiento</li></a>
+                        </ul>
+                    </div>
+                </section>
+                <section class="info">
+                    <div class="info-title content-large content-bold" id="info-3">
+                        <span>Información</span>
+                        <span class="mdi mdi-chevron-down" id="chevron-down-3"></span>
+                        <span class="mdi mdi-chevron-up" id="chevron-up-3"></span>
+                    </div>
+                    <div class="info-links" id="info-links-3">
+                        <ul>
+                            <a href="#"><li>Acerca de BI-Tecnología</li></a>
+                            <a href="#"><li>Terminos y condiciones</li></a>
+                            <a href="#"><li>Aviso de privacidad</li></a>
+                            <a href="#"><li>Forma de contacto</li></a>
+                            <a href="#"><li>Pago seguro</li></a>
+                            <a href="#"><li>Constancia de situación fiscal</li></a>
+                            <a href="#"><li>Opinión de cumplimiento</li></a>
+                        </ul>
+                    </div>
+                </section>
+                <section class="info">
+                    <div class="info-title content-large content-bold" id="info-4">
+                        <span>Información</span>
+                        <span class="mdi mdi-chevron-down" id="chevron-down-4"></span>
+                        <span class="mdi mdi-chevron-up" id="chevron-up-4"></span>
+                    </div>
+                    <div class="info-links" id="info-links-4">
+                        <ul>
+                            <a href="#"><li>Acerca de BI-Tecnología</li></a>
+                            <a href="#"><li>Terminos y condiciones</li></a>
+                            <a href="#"><li>Aviso de privacidad</li></a>
+                            <a href="#"><li>Forma de contacto</li></a>
+                            <a href="#"><li>Pago seguro</li></a>
+                            <a href="#"><li>Constancia de situación fiscal</li></a>
+                            <a href="#"><li>Opinión de cumplimiento</li></a>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </section>
+        <section id="copyright" class="footer-text">
+            <div class="max-width-container">
+                &copy; Todos los derechos reservados, Big Impression Tecnología
+            </div>
+        </section>
+    </footer>
+</body>
+</html>

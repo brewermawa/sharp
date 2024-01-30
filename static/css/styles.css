@@ -88,7 +88,7 @@ button:hover {
 }
 
 .content {
-    font-size: .875rem;
+    font-size: 0.875rem;
     letter-spacing: 0.3px;
 }
 
@@ -224,7 +224,6 @@ header {
     border: 0px;
     flex: 0 1 600px;
 }
-
 
 #search span {
     flex-shrink: 0;
@@ -537,7 +536,7 @@ header {
 .product-container {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
 }
 
 .product-card {
@@ -557,7 +556,9 @@ header {
 }
 
 .product-card img{
+    aspect-ratio: 4 / 3;
     width: 100%;
+    height: auto;
 }
 
 .product-card .brand,

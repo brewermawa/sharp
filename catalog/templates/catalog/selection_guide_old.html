@@ -1,0 +1,177 @@
+{% extends 'main.html' %}
+{% load static %}
+ 
+{% block title %}BI-Tecnología - Product{% endblock title %}
+
+{% block content %}
+<section id="breadcrumb">
+    <div class="max-width-container content-muted">
+        <a href="">Inicio</a>
+        &nbsp;/&nbsp;
+        <span class="content-xlarge">Promociones</span>
+    </div>
+</section>
+<section id="selection-guide" class="content">
+    <div class="max-width-container">
+        <div id="guide-header" class="section-header rounded-box">
+            <div class="content-xlarge">Guía de Selección</div>
+        </div>
+        <div id="questions" class="rounded-box">
+            <div>
+                <div class="title">Que tipo de impresión necesitas?</div>
+                <div>
+                    <label class="guide-checkbox-container content content-muted" for="check1">
+                        <input type="checkbox" name="check1" id="check1">
+                        Arquitecture e ingeniería
+                    </label>
+                    <label class="guide-checkbox-container content-muted" for="check2">
+                        <input type="checkbox" name="check2" id="check2">
+                        Presentaciones
+                    </label>
+                    <label class="guide-checkbox-container content content-muted" for="check3">
+                        <input type="checkbox" name="check3" id="check3">
+                        Mapas
+                    </label>
+                    <label class="guide-checkbox-container content-muted" for="check4">
+                        <input type="checkbox" name="check4" id="check4">
+                        Publicidad
+                    </label>
+                    <label class="guide-checkbox-container content content-muted" for="check5">
+                        <input type="checkbox" name="check5" id="check5">
+                        Fotografía y arte
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div class="title">Ancho máximo de impresión?</div>
+                <div>
+                    <select name="select" id="select" class="content-small box">
+                        <option value="1">24" (61 cm)</option>
+                        <option value="2">36" (91 cm)</option>
+                        <option value="3">44" (112 cm)</option>
+                        <option value="4">64" (162.5 cm)</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="title">Impresiones mensuales?</div>
+                <div>
+                    <select name="select" id="select" class="content-small box">
+                        <option value="1">24" (61 cm)</option>
+                        <option value="2">36" (91 cm)</option>
+                        <option value="3">44" (112 cm)</option>
+                        <option value="4">64" (162.5 cm)</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div class="title">Frecuencia de uso?</div>
+                <div>
+                    <label class="guide-checkbox-container content content-muted" for="check1">
+                        <input type="checkbox" name="check1" id="check1">
+                        Ocasionalmente
+                    </label>
+                    <label class="guide-checkbox-container content-muted" for="check2">
+                        <input type="checkbox" name="check2" id="check2">
+                        Frecuente
+                    </label>
+                    <label class="guide-checkbox-container content content-muted" for="check3">
+                        <input type="checkbox" name="check3" id="check3">
+                        Diario
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div class="title">Necesitas copia o escaneo?</div>
+                <div>
+                    <label class="guide-radio-container content content-muted" for="radio1">
+                        <input type="radio" name="radio" id="radio1">
+                        Si
+                    </label>
+                    <label class="guide-radio-container content content-muted" for="radio2">
+                        <input type="radio" name="radio" id="radio2">
+                        No
+                    </label>
+                </div>
+            </div>
+            <div id="guide-button">
+                <button class="content-large content-bold">Buscar</button>
+            </div>
+        </div>
+        <div class="section-title">Resultados de búsqueda</div>
+        <div class="product-container">
+            <div class="product-card rounded-box">
+                <div class="mdi mdi-heart-outline"></div>
+                <div class="offer-pill content-small">-8%</div>
+                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                <a href="" class="brand content-small">HP</a>
+                <a href="" class="product-name content">HP Designjet T730</a>
+                <div class="card-price">
+                    <span class="not-price">$11,111.11</span>
+                    <span class="price">$11,111.11</span>
+                </div>
+                <button>Comprar</button>
+            </div>
+            <div class="product-card rounded-box">
+                <div class="mdi mdi-heart-outline"></div>
+                <div class="offer-pill content-small">-8%</div>
+                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                <a href="" class="brand content-small">HP</a>
+                <a href="" class="product-name content">HP Designjet T730</a>
+                <div class="card-price">
+                    <span class="not-price">$11,111.11</span>
+                    <span class="price">$11,111.11</span>
+                </div>
+                <button>Comprar</button>
+            </div>
+            <div class="product-card rounded-box">
+                <div class="mdi mdi-heart-outline"></div>
+                <div class="offer-pill content-small">-8%</div>
+                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                <a href="" class="brand content-small">HP</a>
+                <a href="" class="product-name content">HP Designjet T730</a>
+                <div class="card-price">
+                    <span class="not-price">$11,111.11</span>
+                    <span class="price">$11,111.11</span>
+                </div>
+                <button>Comprar</button>
+            </div>
+            <div class="product-card rounded-box">
+                <div class="mdi mdi-heart-outline"></div>
+                <div class="offer-pill content-small">-8%</div>
+                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                <a href="" class="brand content-small">HP</a>
+                <a href="" class="product-name content">HP Designjet T730</a>
+                <div class="card-price">
+                    <span class="not-price">$11,111.11</span>
+                    <span class="price">$11,111.11</span>
+                </div>
+                <button>Comprar</button>
+            </div>
+            <div class="product-card rounded-box">
+                <div class="mdi mdi-heart-outline"></div>
+                <div class="offer-pill content-small">-8%</div>
+                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                <a href="" class="brand content-small">HP</a>
+                <a href="" class="product-name content">HP Designjet T730</a>
+                <div class="card-price">
+                    <span class="not-price">$11,111.11</span>
+                    <span class="price">$11,111.11</span>
+                </div>
+                <button>Comprar</button>
+            </div>
+            <div class="product-card rounded-box">
+                <div class="mdi mdi-heart-outline"></div>
+                <div class="offer-pill content-small">-8%</div>
+                <a href=""><img src="{% static 'images/plotters.jpg' %}" alt=""></a>
+                <a href="" class="brand content-small">HP</a>
+                <a href="" class="product-name content">HP Designjet T730</a>
+                <div class="card-price">
+                    <span class="not-price">$11,111.11</span>
+                    <span class="price">$11,111.11</span>
+                </div>
+                <button>Comprar</button>
+            </div>
+        </div>
+</section>
+{% endblock content %}

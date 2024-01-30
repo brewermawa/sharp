@@ -3,7 +3,8 @@ from django.forms import TextInput
 from django.db import models
 
 from .models import Announcement, BusinessInfo, Category, Brand, Product, Menu, Contact, Slider, Promo
-from .models import ProductImages, ProductPrice
+from .models import ProductImages, ProductPrice, Feauture, FeautureValue, ProductFeautureValue, CategoryFilter
+from .models import FooterSection, FooterLink
 
 
 @admin.register(Announcement)
@@ -26,6 +27,7 @@ class BusinessInfoAdmin(admin.ModelAdmin):
             return True
         
         return False
+   
    
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -92,10 +94,13 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-   list_display = ["name", "created_by", "created_date", "modified_by", "modified_date", "main_category", "active"]
+   list_display = ["name", "sku", "created_by", "created_date", "modified_by", "modified_date", "main_category", "active"]
    list_filter = ["active", "created_by", "created_date", "modified_by", "modified_date"]
    list_editable = ("active",)
    prepopulated_fields = {"slug": ("name",)}
+   search_fields = ("name",)
+   readonly_fields = ["thumbnail_preview"]
+
 
    def save_model(self, request, obj, form, change):
       if not change:
@@ -108,6 +113,7 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(Menu)
 class MenuAdmin(admin.ModelAdmin):
    list_display = ["category", "product", "name", "order"]
+   list_editable = ("order",)
 
 
 @admin.register(Contact)
@@ -156,3 +162,18 @@ class ProductPriceAdmin(admin.ModelAdmin):
          ProductPrice.objects.filter(product=obj.product, active=True).update(active=False)
 
       super().save_model(request, obj, form, change)
+
+
+admin.site.register(Feauture)
+
+@admin.register(FeautureValue)
+class FeautureValueAdmin(admin.ModelAdmin):
+   fields = ["feauture", "value"]
+
+admin.site.register(ProductFeautureValue)
+
+admin.site.register(CategoryFilter)
+
+admin.site.register(FooterSection)
+
+admin.site.register(FooterLink)
