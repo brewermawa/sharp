@@ -10,12 +10,12 @@ from .utils import getBreadCrumbs, getProducts, getCategoryFilters
 def home_view(request):
     sliders = Slider.objects.filter(active=True)
     promos = Promo.objects.filter(active=True)
-    products = getProducts(Product.objects.filter(categories__pk=1))
+    #products = getProducts(Product.objects.filter(categories__pk=1))
 
     return render(request, "catalog/home.html", {
         "sliders": sliders,
         "promos": promos,
-        "products": products,
+        #"products": products,
     })
 
 def category_view(request, category_slug):

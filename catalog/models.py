@@ -291,16 +291,17 @@ class CategoryFilter(models.Model):
 
 
 class FooterSection(models.Model):
-    name = models.CharField(max_length=25, help_text="Footer section name", verbose_name="Footer Section")
+    name = models.CharField(max_length=50, help_text="Footer section name", verbose_name="Footer Section")
 
     def __str__(self):
         return self.name
     
 
 class FooterLink(models.Model):
-    name = models.CharField(max_length=25, help_text="Footer link name", verbose_name="Footer link")
-    url = models.CharField(max_length=30, null=False, blank=False)
+    name = models.CharField(max_length=50, help_text="Footer link name", verbose_name="Footer link")
+    url = models.CharField(max_length=50, null=False, blank=False)
     footerSection = models.ForeignKey(FooterSection, on_delete=models.CASCADE, null=False, blank=False)
 
     def __str__(self):
         return f"{self.footerSection} - {self.name}"
+    

@@ -236,6 +236,10 @@ header {
     color: black;
     font-size: 1.5rem;
 }
+
+#search span:hover {
+    cursor: pointer;
+}
 /**** BEGIN SEARCH ****/
 
 /**** BEGIN ICONS ****/
@@ -464,24 +468,24 @@ header {
     color: var(--main-font-color);
 }
 
-.slide{
-    display: none;
-}
-
 .slider-img,
 .promo-img {
+    display: block;
     width: 100%;
     border-radius: 10px;
 }
 
-.slide-text {
+.slide-text,
+.promo-text {
     position: absolute;
-    top: 10%;
-    left: 10%;
+    width: 90%;
+    top: 27%;
+    left: 7%;
 }
 
-.slide-text > div {
-    margin-top: 10%;
+.slide-text > div,
+.promo-text > div {
+    margin-bottom: 8%;
 }
 
 .slide-title,
@@ -513,16 +517,7 @@ header {
 
 .promo {
     position: relative;
-}
-
-.promo-text {
-    position: absolute;
-    top: 22%;
-    left: 10%;
-}
-
-.promo-text > * {
-    margin-top: 10%;
+    height: 100%;
 }
 
 #feautured {
@@ -1130,7 +1125,7 @@ footer {
     }
 
     .promo-text {
-        top: 5%;
+        top: 17%;
     }
 
     .promo-msg {
@@ -1219,7 +1214,7 @@ footer {
 
     .promo-text {
         font-size: 1rem;
-        top: 12%;
+        /* top: 12%; */
     }
 
     .promo-msg {

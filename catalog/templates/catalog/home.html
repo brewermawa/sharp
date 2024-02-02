@@ -5,5 +5,54 @@
 {% block title %}BI-Tecnología - Inicio{% endblock title %}
 
 {% block content %}
+<section class="slider-promo">
+    <div class="max-width-container">
+        <section class="slider-container">
+            {% for slider in sliders %}
+                {% if slider.category %}
+                <a href="{{ slider.category.get_absolute_url }}">
+                {% else %}
+                <a href="{{ slider.product.get_absolute_url }}">
+                {% endif %}
+                    <div class="slide">
+                        <img class="slider-img" src="images/{{ slider.image }}" alt="Filled by django">
+                        <div class="slide-text">
+                            <div class="slide-title">{{ slider.title }}</div>
+                            <div class="slide-name content heading-large">{{ slider.name }}</div>
+                            <div class="slide-msg content-large">{{ slider.message }}</div>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
 
+            <div class="slider-indicator">
+                {% for slider in sliders %}
+                    {% if forloop.counter == 1 %}
+                        <span class="slider-dot mdi mdi-circle" id="dot-{{ forloop.counter }}"></span>
+                    {% else %}
+                        <span class="slider-dot mdi mdi-circle-outline" id="dot-{{ forloop.counter }}"></span>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        <section class="promo-container">
+            {% for promo in promos %}
+                {% if promo.category %}
+                    <a href="{{ promo.category.get_absolute_url }}">
+                {% else %}
+                    <a href="{{ promo.product.get_absolute_url }}">
+                {% endif %}
+                <div class="promo" id="promo-{{ forloop.counter }}">
+                    <img class="promo-img" src="images/{{ promo.image }}" alt="Promo {{ forloop.counter }}">
+                    <div class="promo-text">
+                        <div class="promo-title">{{ promo.title }}</div>
+                        <div class="promo-name">{{ promo.name }}</div>
+                        <div class="promo-msg">{{ promo.message }}</div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </section>
+    </div>
+</section>
 {% endblock content %}

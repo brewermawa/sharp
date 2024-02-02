@@ -107,5 +107,5 @@ function carousel() {
 
     selectSlide(slideIndex);
 
-    setTimeout(carousel, 5000);
+    setTimeout(carousel, 500000);
 }
